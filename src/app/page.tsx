@@ -11,6 +11,7 @@ import StatsCards from '@/components/StatsCards';
 import LanguageGroup from '@/components/LanguageGroup';
 import CompactSearchBar from '@/components/CompactSearchBar';
 import Footer from '@/components/Footer';
+import BackToTop from '@/components/BackToTop';
 
 export default function Home() {
   const [theme, setTheme] = useState<'light' | 'dark'>('dark');
@@ -63,13 +64,13 @@ export default function Home() {
     // Don't reset rate limit immediately, keep previous if any, or let it update
 
     const steps = [
-      'Initializing secure connection...',
-      'Handshaking with GitHub API...',
-      'Retrieving user profile...',
-      'Fetching starred repositories...',
-      'Analyzing programming languages...',
-      'Calculating influence metrics...',
-      'Finalizing dashboard views...'
+      'Establishing secure tunnel to GitHub...',
+      'Verifying API handshake protocols...',
+      'Mapping decentralized star network...',
+      'Extracting repository metadata...',
+      'Running language dependency analysis...',
+      'Optimizing influence score indices...',
+      'Compiling real-time dashboard data...'
     ];
 
     let currentStepIndex = 0;
@@ -213,7 +214,7 @@ export default function Home() {
           w-full mx-auto px-6 md:px-12 
           ${!hasSearched
             ? 'flex-1 flex flex-col items-center justify-center max-w-7xl'
-            : 'pt-32 pb-24 max-w-5xl flex-1 flex flex-col'}
+            : 'pt-12 pb-16 max-w-5xl flex-1 flex flex-col'}
         `}
       >
         <div className={`w-full transition-all duration-700 ${isLoading ? 'opacity-50 blur-sm pointer-events-none scale-[0.98]' : 'opacity-100 blur-0'}`}>
@@ -231,7 +232,7 @@ export default function Home() {
 
           {/* Dashboard - Results */}
           {hasSearched && !isLoading && !error && (
-            <div className="animate-slide-up space-y-12">
+            <div className="animate-slide-up space-y-8">
               <StatsCards
                 totalRepos={repos.length}
                 topLanguage={stats.topLanguage}
@@ -253,7 +254,7 @@ export default function Home() {
                 onSearchChange={setSearchTerm}
               />
 
-              <div className="space-y-32">
+              <div className="space-y-16">
                 {Object.keys(groupedRepos)
                   .sort((a, b) => {
                     if (a === 'Other') return 1;
@@ -277,6 +278,7 @@ export default function Home() {
       </main>
 
       <Footer />
+      <BackToTop />
     </div>
   );
 }

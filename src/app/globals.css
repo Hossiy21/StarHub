@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@variant dark (&:where(.dark, .dark *));
+
 /* Astral - Premium Developer Dashboard */
 
 :root {
@@ -419,6 +421,20 @@ body {
 
   50% {
     box-shadow: 0 0 40px rgba(59, 130, 246, 0.6);
+  }
+}
+
+@keyframes scan {
+  0% {
+    top: 0;
+  }
+
+  50% {
+    top: 100%;
+  }
+
+  100% {
+    top: 0;
   }
 }
 
@@ -1084,9 +1100,9 @@ textarea {
   letter-spacing: -0.03em;
 }
 
-/* Links */
+/* Links - Professional and utility-friendly */
 .light a {
-  color: var(--foreground);
+  color: inherit;
   text-decoration-color: color-mix(in srgb, var(--foreground), transparent 80%);
 }
 
@@ -1126,6 +1142,27 @@ textarea {
 .light .text-amber-400,
 .light .text-yellow-500 {
   color: var(--primary) !important;
+}
+
+/* GitHub Premium Button - Absolute Contrast */
+.btn-premium-github {
+  background-color: #0d1117 !important;
+  color: #ffffff !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.btn-premium-github svg {
+  fill: #ffffff !important;
+}
+
+.dark .btn-premium-github {
+  background-color: #ffffff !important;
+  color: #0d1117 !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.dark .btn-premium-github svg {
+  fill: #0d1117 !important;
 }
 
 .light .bg-amber-500\/20,

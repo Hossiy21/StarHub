@@ -22,7 +22,7 @@ export default function CompactSearchBar({
     const isLow = rateLimit ? rateLimit.remaining < 10 : false;
 
     return (
-        <div className="w-full max-w-2xl mx-auto mb-12 animate-fade-in">
+        <div className="w-full max-w-2xl mx-auto mb-6 animate-fade-in">
             {/* Search Input */}
             <div className="relative">
                 <SearchInput
@@ -37,22 +37,31 @@ export default function CompactSearchBar({
 
             {/* Rate Limit Info Bar - Professional & Minimal */}
             {rateLimit && (
-                <div className="mt-4 flex items-center justify-center gap-6 px-4 py-3 rounded-xl bg-card/30 border border-border/30">
+                <div className="mt-4 flex items-center justify-center gap-6 px-5 py-2.5 rounded-2xl bg-white dark:bg-zinc-900 border border-slate-200 dark:border-white/10 shadow-sm">
+                    {/* Status Badge */}
+                    <div className="flex items-center gap-2 pr-6 border-r border-slate-200 dark:border-white/10">
+                        <div className={`w-1.5 h-1.5 rounded-full animate-pulse ${isLow ? 'bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.6)]' : 'bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]'}`} />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 dark:text-zinc-500">
+                            {isLow ? 'Status: Low' : 'Status: Healthy'}
+                        </span>
+                    </div>
+
                     {/* Usage Stats */}
-                    <div className={`flex items-center gap-2 text-xs font-medium ${isLow ? 'text-orange-500' : 'text-muted-foreground'}`}>
-                        <Activity className="w-3.5 h-3.5" />
+                    <div className={`flex items-center gap-2 text-[11px] font-bold tracking-tight ${isLow ? 'text-orange-600 dark:text-orange-400' : 'text-slate-600 dark:text-zinc-300'}`}>
+                        <Activity className="w-3.5 h-3.5 opacity-70" />
                         <span>
-                            <span className={isLow ? 'font-bold' : 'font-semibold'}>{rateLimit.remaining}</span>
-                            <span className="opacity-60">/{rateLimit.limit}</span>
-                            <span className="ml-1 opacity-50">requests</span>
+                            <span>{rateLimit.remaining}</span>
+                            <span className="opacity-40 mx-0.5">/</span>
+                            <span className="opacity-40">{rateLimit.limit}</span>
+                            <span className="ml-1.5 text-[9px] font-black uppercase tracking-wider opacity-50">Requests</span>
                         </span>
                     </div>
 
                     {/* Reset Timer */}
-                    {minutesRemaining > 0 && rateLimit.remaining < rateLimit.limit && (
-                        <div className="flex items-center gap-2 text-xs font-medium text-muted-foreground/60">
-                            <Clock className="w-3.5 h-3.5" />
-                            <span>Resets in {minutesRemaining}m</span>
+                    {minutesRemaining > 0 && (
+                        <div className="flex items-center gap-2 text-[11px] font-bold text-slate-400 dark:text-zinc-500">
+                            <Clock className="w-3.5 h-3.5 opacity-60" />
+                            <span className="uppercase tracking-wide text-[9px] font-black">Resets in {minutesRemaining}m</span>
                         </div>
                     )}
                 </div>

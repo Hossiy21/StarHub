@@ -17,7 +17,7 @@ export default function StatsCards({ totalRepos, topLanguage, user, rateLimit }:
     const minutesRemaining = rateLimit ? Math.ceil((rateLimit.reset - Math.floor(Date.now() / 1000)) / 60) : 0;
 
     return (
-        <div className="w-full max-w-5xl mx-auto mb-12 px-4 animate-fade-in-up">
+        <div className="w-full max-w-5xl mx-auto mb-6 px-4 animate-fade-in-up">
             <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
 
                 {/* 1. Medium Profile Card (Spans 5 columns) */}

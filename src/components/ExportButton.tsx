@@ -73,7 +73,7 @@ export default function ExportButton({ data, username }: ExportButtonProps) {
             ...rows.map(row => row.map(cell => `"${cell}"`).join(','))
         ].join('\r\n');
 
-        downloadFile(csvContent, `starscan-${username}.csv`, 'text/csv;charset=utf-8;');
+        downloadFile(csvContent, `StarHub-${username}.csv`, 'text/csv;charset=utf-8;');
     };
 
     return (
@@ -82,77 +82,81 @@ export default function ExportButton({ data, username }: ExportButtonProps) {
                 onClick={() => status === 'idle' && setIsOpen(!isOpen)}
                 disabled={status !== 'idle'}
                 className={`
-                    group relative flex items-center gap-2.5 px-6 py-2.5 rounded-xl
-                    text-[12px] font-bold tracking-wide transition-all duration-300
+                    group relative flex items-center gap-2 px-4 py-2 rounded-lg
+                    text-[10px] font-black uppercase tracking-[0.1em] transition-all duration-300
                     active:scale-[0.97] disabled:opacity-80
                     ${status === 'success'
-                        ? 'bg-emerald-500 text-white shadow-lg shadow-emerald-500/25'
-                        : 'bg-card border border-border text-foreground hover:border-primary/50 hover:bg-secondary/80 shadow-sm hover:shadow-md backdrop-blur-sm'
+                        ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                        : 'bg-secondary text-secondary-foreground border border-border/50 hover:border-blue-500/30 hover:bg-secondary/80'
                     }
                 `}
             >
                 {status === 'idle' && (
                     <>
-                        <Download className={`w-3.5 h-3.5 transition-transform duration-300 ${isOpen ? 'translate-y-0.5' : 'group-hover:-translate-y-0.5'} ${isOpen ? 'text-primary' : ''}`} />
+                        <Download className={`w-3.5 h-3.5 transition-all duration-300 ${isOpen ? 'translate-y-0.5' : 'group-hover:-translate-y-0.5'}`} />
                         <span>Export</span>
-                        <ChevronDown className={`w-3.5 h-3.5 ml-1 transition-transform duration-300 ${isOpen ? 'rotate-180 text-primary' : 'text-muted-foreground/60'}`} />
+                        <div className="h-2 w-px bg-current opacity-20 mx-0.5" />
+                        <ChevronDown className={`w-3 h-3 transition-transform duration-500 ${isOpen ? 'rotate-180' : ''}`} />
                     </>
                 )}
                 {status === 'exporting' && (
                     <>
                         <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                        <span>Processing...</span>
+                        <span>Generating...</span>
                     </>
                 )}
                 {status === 'success' && (
                     <>
                         <Check className="w-3.5 h-3.5 animate-in zoom-in duration-300" />
-                        <span>Ready</span>
+                        <span>Exported</span>
                     </>
                 )}
             </button>
 
             {isOpen && (
                 <div
-                    className="absolute right-0 mt-3 w-80 rounded-2xl z-50 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-300 border border-slate-200 dark:border-white/[0.15] bg-white dark:bg-[#0f1115] shadow-[0_20px_50px_rgba(0,0,0,0.5)] ring-1 ring-black/5 dark:ring-white/5"
+                    className="absolute left-full top-0 ml-3 w-64 rounded-xl z-50 overflow-hidden animate-fade-in border border-border bg-card shadow-xl ring-1 ring-black/5 dark:ring-white/5"
                 >
-                    <div className="px-6 py-4 border-b border-slate-100 dark:border-white/5 bg-slate-50/50 dark:bg-white/[0.02]">
-                        <p className="text-[10px] font-black uppercase tracking-[0.25em] text-slate-400 dark:text-blue-400/60 text-center">
-                            Export Repositories
+                    <div className="px-4 py-3 border-b border-border/50 bg-secondary/30">
+                        <h4 className="text-[10px] font-black text-foreground uppercase tracking-widest leading-none mb-0.5">
+                            Data Portability
+                        </h4>
+                        <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
+                            {data.length} records available
                         </p>
                     </div>
 
-                    <div className="p-2">
+                    <div className="p-1.5 space-y-1">
                         <button
                             onClick={exportJSON}
-                            className="w-full p-4 text-left transition-all duration-200 flex items-center gap-4 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.05] group"
+                            className="w-full p-2.5 text-left transition-all duration-300 flex items-center gap-3 rounded-lg hover:bg-blue-500/5 dark:hover:bg-blue-500/10 group relative overflow-hidden active:scale-[0.98]"
                         >
-                            <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20 group-hover:bg-primary/20 group-hover:border-primary/30 transition-all duration-300">
-                                <FileJson className="w-5 h-5 text-primary" />
+                            <div className="relative p-2 rounded-lg bg-blue-500/10 border border-blue-500/20 group-hover:bg-blue-500/20 group-hover:border-blue-500/30 transition-all duration-500">
+                                <FileJson className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <span className="text-[14px] font-bold block text-foreground mb-0.5 group-hover:text-primary transition-colors">
+                                <span className="text-[11px] font-black text-foreground block mb-0.5 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors uppercase tracking-tight">
                                     JSON Format
                                 </span>
-                                <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight block">
-                                    Clean, structured data format
+                                <span className="text-[9px] font-bold text-muted-foreground leading-tight block uppercase tracking-wide">
+                                    Full Definition
                                 </span>
                             </div>
                         </button>
 
                         <button
                             onClick={exportCSV}
-                            className="w-full p-4 text-left transition-all duration-200 flex items-center gap-4 rounded-xl hover:bg-slate-100 dark:hover:bg-white/[0.05] group"
+                            className="w-full p-2.5 text-left transition-all duration-300 flex items-center gap-3 rounded-lg hover:bg-indigo-500/5 dark:hover:bg-indigo-500/10 group relative overflow-hidden active:scale-[0.98]"
                         >
-                            <div className="p-2.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 group-hover:bg-emerald-500/20 group-hover:border-emerald-500/30 transition-all duration-300">
-                                <FileSpreadsheet className="w-5 h-5 text-emerald-500" />
+                            <div className="relative p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20 group-hover:bg-indigo-500/20 group-hover:border-indigo-500/30 transition-all duration-500">
+                                <FileSpreadsheet className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
                             </div>
                             <div className="flex-1 min-w-0">
-                                <span className="text-[14px] font-bold block text-foreground mb-0.5 group-hover:text-emerald-500 transition-colors">
-                                    CSV Spreadsheet
+                                <span className="text-[11px] font-black text-foreground block mb-0.5 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors uppercase tracking-tight">
+                                    CSV Format
                                 </span>
-                                <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 leading-tight block">
-                                    Excel & Google Sheets compatible
+                                <span className="text-[9px] font-bold text-muted-foreground leading-tight block uppercase tracking-wide">
+                                    Sheet Ready
                                 </span>
                             </div>
                         </button>

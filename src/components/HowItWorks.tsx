@@ -97,7 +97,7 @@ export default function HowItWorks() {
                     <ul className="space-y-4 relative">
                         {[
                             "No user tracking or analytics",
-                            "Source code is 100% open",
+                            // "Source code is 100% open",
                             "Tokens are stored in browser memory only",
                             "Refresh the page to wipe everything"
                         ].map((item, i) => (

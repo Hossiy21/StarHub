@@ -13,7 +13,7 @@ interface LanguageGroupProps {
 export default function LanguageGroup({ language, repos }: LanguageGroupProps) {
     return (
         <div className="scroll-mt-24" id={`lang-${language}`}>
-            <div className="bg-background/80 backdrop-blur-xl py-6 mb-8 border-b border-border/50 transition-all">
+            <div className="bg-background/80 backdrop-blur-xl py-4 mb-4 border-b border-border/50 transition-all">
                 <div className="w-full flex items-center justify-between gap-4">
                     <div className="flex items-center gap-4">
                         <div className="relative">

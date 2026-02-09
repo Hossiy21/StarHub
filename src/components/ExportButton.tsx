@@ -117,14 +117,7 @@ export default function ExportButton({ data, username }: ExportButtonProps) {
                 <div
                     className="absolute left-full top-0 ml-3 w-64 rounded-xl z-50 overflow-hidden animate-fade-in border border-border bg-card shadow-xl ring-1 ring-black/5 dark:ring-white/5"
                 >
-                    <div className="px-4 py-3 border-b border-border/50 bg-secondary/30">
-                        <h4 className="text-[10px] font-black text-foreground uppercase tracking-widest leading-none mb-0.5">
-                            Data Portability
-                        </h4>
-                        <p className="text-[9px] font-bold text-muted-foreground uppercase tracking-widest">
-                            {data.length} records available
-                        </p>
-                    </div>
+
 
                     <div className="p-1.5 space-y-1">
                         <button

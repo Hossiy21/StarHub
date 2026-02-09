@@ -217,7 +217,7 @@ export default function Home() {
             : 'pt-12 pb-16 max-w-5xl flex-1 flex flex-col'}
         `}
       >
-        <div className={`w-full transition-all duration-700 ${isLoading ? 'opacity-50 blur-sm pointer-events-none scale-[0.98]' : 'opacity-100 blur-0'}`}>
+        <div className={`w-full transition-all duration-500 ${isLoading ? 'opacity-40 blur-md pointer-events-none scale-[0.99]' : 'opacity-100 blur-0 scale-100'}`}>
           {/* Hero - Initial State */}
           {!hasSearched && (
             <HeroSection onSearch={fetchStars} isLoading={isLoading} rateLimit={rateLimit} />

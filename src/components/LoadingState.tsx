@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import { Loader2, Star, Sparkles } from 'lucide-react';
+import { Loader2, Github, Cpu, Shield } from 'lucide-react';
 
 interface LoadingStateProps {
     step: string;
@@ -9,72 +9,74 @@ interface LoadingStateProps {
 
 export default function LoadingState({ step }: LoadingStateProps) {
     return (
-        <div className="flex-1 flex flex-col items-center justify-center text-center space-y-12 animate-fade-in py-20 relative overflow-hidden">
-            {/* Background Ambient Glow */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/5 dark:bg-blue-600/10 rounded-full blur-[120px] pointer-events-none animate-pulse-slow" />
+        <div className="flex-1 flex flex-col items-center justify-center text-center space-y-16 animate-fade-in py-20 relative overflow-hidden">
+            {/* Background Ambient Depth */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/[0.03] dark:bg-blue-600/[0.07] rounded-full blur-[160px] pointer-events-none" />
 
-            {/* Advanced Scanning Animation */}
-            <div className="relative w-48 h-48">
-                {/* Outer Pulse Rings */}
-                <div className="absolute inset-0 rounded-full bg-blue-500/10 dark:bg-blue-500/20 blur-2xl animate-pulse" />
-                <div className="absolute -inset-4 rounded-full border border-blue-500/5 animate-[ping_3s_linear_infinite]" />
+            {/* Premium Unified Core Animation */}
+            <div className="relative">
+                {/* Outer Glow Halo */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-blue-500/10 dark:bg-blue-400/10 rounded-full blur-3xl animate-pulse-slow" />
 
-                {/* Rotating Geometric Layers */}
-                <div
-                    className="absolute inset-0 rounded-full border-[1.5px] border-dashed border-blue-500/20 animate-[spin_10s_linear_infinite]"
-                />
+                {/* Multi-layered Glass Core */}
+                <div className="relative w-36 h-36 flex items-center justify-center">
+                    {/* Pulsing Orbitals */}
+                    <div className="absolute inset-0 rounded-full border border-blue-500/10 dark:border-white/5 animate-[spin_8s_linear_infinite]" />
+                    <div className="absolute -inset-4 rounded-full border border-dashed border-blue-500/5 dark:border-white/[0.02] animate-[spin_12s_linear_infinite_reverse]" />
 
-                {/* Fast Inner Rings */}
-                <div
-                    className="absolute inset-4 rounded-full border-t-2 border-b-2 border-transparent border-t-blue-500 border-b-indigo-400 opacity-60 animate-[spin_1.5s_cubic-bezier(0.4,0.1,0.6,0.9)_infinite]"
-                />
-                <div
-                    className="absolute inset-8 rounded-full border-l-2 border-r-2 border-transparent border-l-blue-400 border-r-indigo-500 opacity-40 animate-[spin_2s_linear_infinite_reverse]"
-                />
+                    {/* The Core Orb */}
+                    <div className="relative w-24 h-24 rounded-[2rem] bg-white/40 dark:bg-white/[0.03] backdrop-blur-3xl border border-white/20 dark:border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.05)] dark:shadow-none flex items-center justify-center group overflow-hidden">
+                        <div className="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-indigo-500/5 opacity-50 rounded-[2rem]" />
+                        <Github className="w-10 h-10 text-slate-800 dark:text-white/90 relative z-10 opacity-80" />
 
-                {/* Core Scanner Node */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                    <div className="relative bg-white/80 dark:bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/20 dark:border-white/10 shadow-2xl flex flex-col items-center justify-center group overflow-hidden">
-                        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-indigo-500/10 opacity-50" />
+                        {/* Elegant Scan Line */}
+                        <div className="absolute top-0 inset-x-0 h-0.5 bg-blue-500/30 dark:bg-blue-400/40 shadow-[0_0_15px_rgba(59,130,246,0.5)] animate-[scan_3s_ease-in-out_infinite]" />
+                    </div>
+                </div>
 
-                        <div className="relative">
-                            <Star className="w-10 h-10 text-blue-600 dark:text-blue-400 animate-[bounce_2s_ease-in-out_infinite]" fill="currentColor" />
-                            <Sparkles className="absolute -top-1 -right-1 w-4 h-4 text-indigo-500 animate-pulse" />
-                        </div>
+                {/* Satellite Nodes - Telemetry style */}
+                <div className="absolute -top-6 -right-12 animate-in fade-in slide-in-from-left-4 duration-1000">
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 backdrop-blur-md">
+                        <Cpu className="w-3 h-3 text-blue-500" />
+                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-zinc-500">Processing Node</span>
+                    </div>
+                </div>
 
-                        {/* Scanning Line Effect */}
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-blue-500/50 to-transparent animate-[scan_2s_ease-in-out_infinite]" />
+                <div className="absolute -bottom-8 -left-12 animate-in fade-in slide-in-from-right-4 duration-1000 delay-300">
+                    <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/50 dark:bg-white/[0.03] border border-slate-200 dark:border-white/10 backdrop-blur-md">
+                        <Shield className="w-3 h-3 text-emerald-500" />
+                        <span className="text-[9px] font-black uppercase tracking-widest text-slate-500 dark:text-zinc-500">Secure Protocol</span>
                     </div>
                 </div>
             </div>
 
-            {/* Information Display */}
-            <div className="space-y-6 max-w-md mx-auto relative">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-[10px] font-black tracking-[0.2em] text-blue-600 dark:text-blue-400 uppercase">
-                    <Loader2 className="w-3 h-3 animate-spin" />
-                    Deep Scanning GitHub Network
-                </div>
+            {/* Content Display */}
+            <div className="max-w-md mx-auto space-y-6 relative z-10 transition-all duration-500">
+                <div className="space-y-3">
+                    <div className="flex items-center justify-center gap-2.5">
+                        <Loader2 className="w-3.5 h-3.5 text-blue-500 animate-spin" />
+                        <span className="text-[9px] font-black uppercase tracking-[0.3em] text-slate-400 dark:text-zinc-500">
+                            System Telemetry Active
+                        </span>
+                    </div>
 
-                <div className="space-y-2">
-                    <h2 className="text-3xl md:text-4xl font-black tracking-tighter text-slate-900 dark:text-white uppercase">
-                        {step || 'Processing...'}
+                    <h2 className="text-xl md:text-2xl font-black tracking-tight text-slate-900 dark:text-white uppercase leading-none">
+                        {step || 'Initializing...'}
                     </h2>
-                    <p className="text-sm font-bold text-slate-500 dark:text-slate-400 tracking-wide">
-                        Aggregating repository metadata & influence metrics
+
+                    <p className="text-[12px] font-medium text-slate-500 dark:text-zinc-400 tracking-tight max-w-[280px] mx-auto opacity-70">
+                        Synchronizing with GitHub for real-time metadata extraction.
                     </p>
                 </div>
 
-                {/* Professional Progress Bar */}
-                <div className="w-64 mx-auto space-y-2">
-                    <div className="h-1.5 w-full rounded-full overflow-hidden bg-slate-200 dark:bg-white/5 border border-slate-300/20 dark:border-white/5">
-                        <div
-                            className="h-full rounded-full bg-gradient-to-r from-blue-600 via-indigo-500 to-blue-400 animate-gradient-shift shadow-[0_0_10px_rgba(59,130,246,0.5)]"
-                            style={{ width: '100%' }}
-                        />
+                {/* Minimalist Professional Progress */}
+                <div className="w-64 mx-auto">
+                    <div className="h-1 w-full bg-slate-100 dark:bg-white/[0.03] rounded-full overflow-hidden">
+                        <div className="h-full bg-blue-600 dark:bg-blue-500 w-1/4 animate-[loading-progress_2s_ease-in-out_infinite]" />
                     </div>
-                    <div className="flex justify-between items-center text-[9px] font-black text-slate-400 dark:text-slate-600 uppercase tracking-widest">
-                        <span>Stabilizing Link</span>
-                        <span>100% Signal</span>
+                    <div className="mt-2 flex justify-between items-center px-1">
+                        <span className="text-[9px] font-black text-slate-400 dark:text-zinc-600 uppercase tracking-widest">Network Scan</span>
+                        <span className="text-[9px] font-black text-blue-500 dark:text-blue-400 uppercase tracking-widest animate-pulse">Live Link</span>
                     </div>
                 </div>
             </div>

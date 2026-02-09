@@ -155,8 +155,10 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Faster transition */
-  transition: background-color 0.2s ease, color 0.2s ease;
+  /* Premium transition for theme switching */
+  transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Premium Scrollbar */
@@ -425,20 +427,42 @@ body {
 }
 
 @keyframes scan {
-  0% {
-    top: 0;
+
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.1;
   }
 
   50% {
-    top: 100%;
-  }
-
-  100% {
-    top: 0;
+    transform: translateY(90px);
+    opacity: 1;
   }
 }
 
-@keyframes gradient-shift {
+@keyframes loading-progress {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(400%);
+  }
+}
+
+@keyframes float-subtle {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes gradient-flow {
   0% {
     background-position: 0% 50%;
   }
